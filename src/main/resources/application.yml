@@ -1,0 +1,38 @@
+server:
+    port: 8081
+    error:
+        include-message: always
+
+config:
+    data:
+        postgres.host: localhost
+        postgres.port: 5432
+        postgres.database: postgres
+        postgres.schema: currency
+        postgres.username: postgres
+        postgres.password: postgres
+
+spring:
+    datasource:
+        driverClassName: org.postgresql.Driver
+        url: jdbc:postgresql://${config.data.postgres.host}:${config.data.postgres.port}/${config.data.postgres.database}?currentSchema=${config.data.postgres.schema}
+        username: ${config.data.postgres.username}
+        password: ${config.data.postgres.password}
+
+    r2dbc:
+        url: r2dbc:postgresql://${config.data.postgres.host}:${config.data.postgres.port}/${config.data.postgres.database}?currentSchema=${config.data.postgres.schema}
+        username: ${config.data.postgres.username}
+        password: ${config.data.postgres.password}
+        pool.validation-query: SELECT 1
+        pool.initial-size: 8
+        pool.max-size: 8
+        pool.max-idle-time: 30s
+        pool.max-create-connection-time: 3s
+        pool.max-acquire-time: 10s
+        pool.max-life-time: 180s
+
+    liquibase:
+        defaultSchema: ${config.data.postgres.schema}
+        url: ${spring.datasource.url}
+        user: ${spring.datasource.username}
+        password: ${spring.datasource.password}
