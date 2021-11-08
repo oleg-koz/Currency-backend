@@ -20,10 +20,10 @@ public class CurrencyAutomation {
 
     private final CurrencyTickerXMLParser currencyTickerXMLParser;
 
-    private final String bankUrl = "https://www.lb.lt/lt/currency/daylyexport/?xml=1&class=Eu&type=day&date_day=2021-11-04";
+    private final String bankUrl = "https://www.lb.lt/lt/currency/daylyexport/?xml=1&class=Eu&type=day";
 
     private static String getDownloadPath() {
-        File resourcesFolder = new File("resources/currency-data");
+        File resourcesFolder = new File("src/main/resources/currency-data");
         return resourcesFolder.getAbsolutePath();
     }
 
@@ -44,7 +44,9 @@ public class CurrencyAutomation {
         driver.get(bankUrl);
         Thread.sleep(5000);
         driver.quit();
+        // TODO: change to dynamic filename
         currencyTickerXMLParser.convertXMLToObject(getDownloadPath() + "/currency-2021-11-06.xml");
+
 
     }
 }

@@ -36,9 +36,14 @@ public class CurrencyTickerXMLParser {
                     String santykis = eElement.getElementsByTagName("santykis").item(0).getTextContent();
                     String data = eElement.getElementsByTagName("data").item(0).getTextContent();
 
-                    CurrencyTicker currencyTicker = new CurrencyTicker(valiutos_kodas, pavadinimas, santykis, data);
-                    currencyTickerService.saveCurrencyTicker(currencyTicker).subscribe();
+                    if (!pavadinimas.equalsIgnoreCase("Valiutos pavadinimas")) {
+                        CurrencyTicker currencyTicker = new CurrencyTicker(valiutos_kodas, pavadinimas, santykis, data);
+                        currencyTickerService.saveCurrencyTicker(currencyTicker).subscribe();
+                    }
+
+
                 }
+
             }
         } catch (Exception e) {
             e.printStackTrace();
