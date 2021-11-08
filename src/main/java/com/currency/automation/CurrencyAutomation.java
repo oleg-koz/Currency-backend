@@ -44,7 +44,7 @@ public class CurrencyAutomation {
         driver.get(bankUrl);
         Thread.sleep(5000);
         driver.quit();
-        currencyTickerXMLParser.convertXMLToObject(getDownloadPath() + "/*.xml");
+        currencyTickerXMLParser.convertXMLToObject(getDownloadPath() + "/currency-2021-11-06.xml");
 
     }
 }
