@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import static org.springframework.data.relational.core.query.Criteria.where;
+import static org.springframework.data.relational.core.query.Query.query;
+
 @Repository
 @AllArgsConstructor
 public class CurrencyTickerRepository {
@@ -18,6 +21,14 @@ public class CurrencyTickerRepository {
 
     public Flux<CurrencyTicker> getCurrencyTickers() {
         return r2dbcEntityTemplate.select(CurrencyTicker.class).all();
+    }
+
+    public Flux<CurrencyTicker> getCurrencyById() {
+        return r2dbcEntityTemplate.select(query(where("valiutos_kodas").is("GBP")), CurrencyTicker.class);
+    }
+
+    public Flux<CurrencyTicker> getCurrencyByDate() {
+        return r2dbcEntityTemplate.select(query(where("data").is("2021-11-09")), CurrencyTicker.class);
     }
 
 }

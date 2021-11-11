@@ -19,4 +19,12 @@ public class CurrencyTickerService {
         return currencyTickerRepository.getCurrencyTickers();
     }
 
+    public Flux<CurrencyTicker> getCurrencyById() {
+        return currencyTickerRepository.getCurrencyById();
+    }
+
+    public Flux<CurrencyTicker> getCurrencyByDate() {
+        return currencyTickerRepository.getCurrencyByDate();
+    }
+
 }

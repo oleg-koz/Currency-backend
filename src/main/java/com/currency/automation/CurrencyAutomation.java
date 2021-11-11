@@ -29,7 +29,8 @@ public class CurrencyAutomation {
 
 
 
-    @Scheduled(cron = "0 0 1 ? * *")
+//    @Scheduled(cron = "0 0 1 ? * *")
+    @Scheduled(fixedDelay = 500000)
     private void automation() throws InterruptedException {
         HashMap<String, Object> chromePrefs = new HashMap<>();
         chromePrefs.put("profile.default_content_settings.popups", 0);
@@ -45,7 +46,7 @@ public class CurrencyAutomation {
         Thread.sleep(5000);
         driver.quit();
         // TODO: change to dynamic filename
-        currencyTickerXMLParser.convertXMLToObject(getDownloadPath() + "/currency-2021-11-06.xml");
+        currencyTickerXMLParser.convertXMLToObject(getDownloadPath() + "/currency-2021-11-10.xml");
 
 
     }
