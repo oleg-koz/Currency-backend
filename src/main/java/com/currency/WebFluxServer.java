@@ -24,8 +24,8 @@ public class WebFluxServer {
 
 			RouterFunction<ServerResponse> currencyApi = route(
 					GET("/currencies"), req -> currencyTickerHandler.getCurrencies()).andRoute(
-					GET("/currencies/kodas"), req -> currencyTickerHandler.getCurrencyById()).andRoute(
-					GET("/currencies/date"), req -> currencyTickerHandler.getCurrencyByDate());
+					GET("/currencies/{kodas}"), currencyTickerHandler::getCurrencyById).andRoute(
+					GET("/currencies/data/{datas}"), currencyTickerHandler::getCurrencyByDate);
 
 			return nest(
 					path("/v1"), currencyApi);

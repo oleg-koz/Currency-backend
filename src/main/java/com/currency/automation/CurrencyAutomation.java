@@ -46,7 +46,7 @@ public class CurrencyAutomation {
         Thread.sleep(5000);
         driver.quit();
         // TODO: change to dynamic filename
-        currencyTickerXMLParser.convertXMLToObject(getDownloadPath() + "/currency-2021-11-10.xml");
+        currencyTickerXMLParser.convertXMLToObject(getDownloadPath() + "/currency-2021-11-08.xml");
 
 
     }

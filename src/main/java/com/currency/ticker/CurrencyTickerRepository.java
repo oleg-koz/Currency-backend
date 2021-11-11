@@ -23,12 +23,13 @@ public class CurrencyTickerRepository {
         return r2dbcEntityTemplate.select(CurrencyTicker.class).all();
     }
 
-    public Flux<CurrencyTicker> getCurrencyById() {
-        return r2dbcEntityTemplate.select(query(where("valiutos_kodas").is("GBP")), CurrencyTicker.class);
+    public Flux<CurrencyTicker> getCurrencyById(String kodas) {
+        System.out.println(kodas);
+        return r2dbcEntityTemplate.select(query(where("valiutos_kodas").is(kodas)), CurrencyTicker.class);
     }
 
-    public Flux<CurrencyTicker> getCurrencyByDate() {
-        return r2dbcEntityTemplate.select(query(where("data").is("2021-11-09")), CurrencyTicker.class);
+    public Flux<CurrencyTicker> getCurrencyByDate(String datas) {
+        return r2dbcEntityTemplate.select(query(where("data").is(datas)), CurrencyTicker.class);
     }
 
 }
